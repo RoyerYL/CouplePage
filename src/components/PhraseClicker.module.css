@@ -1,0 +1,40 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.phrase {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  pointer-events: none;
+  animation: fadeOut 2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.8);
+  }
+}
+
+.instruction {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+}
