@@ -1,8 +1,6 @@
 .heartContainer {
-    border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+width: 100px;
+height: 100px;
 }
 
 .heart:hover {

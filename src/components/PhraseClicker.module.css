@@ -10,7 +10,7 @@
 .phrase {
   position: absolute;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 6px 12px;
   border-radius: 8px;
@@ -30,11 +30,48 @@
   }
 }
 
-.instruction {
+/* Fuegos artificiales */
+.explosion {
   position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  color: #555;
-  font-size: 16px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: hsl(calc(360 * var(--i) / 12), 100%, 60%);
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+.particle:nth-child(1)  { --i: 0; }
+.particle:nth-child(2)  { --i: 1; }
+.particle:nth-child(3)  { --i: 2; }
+.particle:nth-child(4)  { --i: 3; }
+.particle:nth-child(5)  { --i: 4; }
+.particle:nth-child(6)  { --i: 5; }
+.particle:nth-child(7)  { --i: 6; }
+.particle:nth-child(8)  { --i: 7; }
+.particle:nth-child(9)  { --i: 8; }
+.particle:nth-child(10) { --i: 9; }
+.particle:nth-child(11) { --i: 10; }
+.particle:nth-child(12) { --i: 11; }
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+      calc(60px * cos(30deg * var(--i))),
+      calc(60px * sin(30deg * var(--i)))
+    ) scale(2);
+    opacity: 0;
+  }
+}
+

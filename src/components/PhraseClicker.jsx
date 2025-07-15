@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './PhraseClicker.module.css';
+import HeartBeat from './HeartBeat';
 
 const phrases = [
   "¡Sigue adelante!",
@@ -12,6 +13,7 @@ const phrases = [
 
 const PhraseClicker = () => {
   const [texts, setTexts] = useState([]);
+  const [explosions, setExplosions] = useState([]);
 
   const handleClick = (e) => {
     const x = e.clientX;
@@ -19,26 +21,43 @@ const PhraseClicker = () => {
     const phrase = phrases[Math.floor(Math.random() * phrases.length)];
     const id = Date.now();
 
+    // Añadir frase
     setTexts((prev) => [...prev, { id, phrase, x, y }]);
 
-    // Eliminar la frase después de 2 segundos
+    // Añadir efecto de fuegos artificiales
+    setExplosions((prev) => [...prev, { id, x, y }]);
+
+    // Remover ambos después de 2 segundos
     setTimeout(() => {
       setTexts((prev) => prev.filter((t) => t.id !== id));
-    }, 2000);
+      setExplosions((prev) => prev.filter((e) => e.id !== id));
+    }, 3000);
   };
 
   return (
     <div className={styles.container} onClick={handleClick}>
       {texts.map(({ id, phrase, x, y }) => (
         <span
-          key={id}
+          key={`text-${id}`}
           className={styles.phrase}
           style={{ left: x, top: y }}
         >
           {phrase}
         </span>
       ))}
-      <p className={styles.instruction}>Haz clic en cualquier parte</p>
+
+      {explosions.map(({ id, x, y }) => (
+        <div
+          key={`explosion-${id}`}
+          className={styles.explosion}
+          style={{ left: x-50, top: y-50 }}
+        >
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span key={i} className={styles.particle}><HeartBeat /></span>
+          ))}
+        </div>
+      ))}
+
     </div>
   );
 };
