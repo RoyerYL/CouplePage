@@ -8,8 +8,6 @@ function HeartBeat() {
         viewBox="0 0 24 24"
         fill="red"
         xmlns="http://www.w3.org/2000/svg"
-        width="100"
-        height="100"
       >
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
                  2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09 

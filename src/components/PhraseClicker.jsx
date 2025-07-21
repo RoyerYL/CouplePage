@@ -50,10 +50,12 @@ const PhraseClicker = () => {
         <div
           key={`explosion-${id}`}
           className={styles.explosion}
-          style={{ left: x-50, top: y-50 }}
+          style={{ left: x - 50, top: y - 50 }}
         >
           {Array.from({ length: 12 }).map((_, i) => (
-            <span key={i} className={styles.particle}><HeartBeat /></span>
+            <div key={i} className={styles.particle}>
+                <HeartBeat />
+            </div>
           ))}
         </div>
       ))}
