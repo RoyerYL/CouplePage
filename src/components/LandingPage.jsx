@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './LandingPage.module.css';
-import RotatingEnvelope from './RotatingEnvelope';
+import EnvelopeWithLetter from './EnvelopeWithLetter';
 
 function LandingPage() {
   const [timePassed, setTimePassed] = useState('');
@@ -31,7 +31,7 @@ function LandingPage() {
     <div className={styles.containerLanding}>
       <h2>Fecha de referencia: 19 de julio de 2024</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
-      <RotatingEnvelope />
+      <EnvelopeWithLetter/>
     </div>
   );
 }
