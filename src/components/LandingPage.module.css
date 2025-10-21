@@ -26,7 +26,7 @@
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1001;
-  animation: fadeInOut 3s ease forwards;
+  animation: fadeInOut 5s ease forwards;
 }
 
 /* 🌀 Animación del mensaje */
