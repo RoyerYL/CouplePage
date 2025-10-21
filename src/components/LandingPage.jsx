@@ -31,7 +31,10 @@ function LandingPage() {
     <div className={styles.containerLanding}>
       <h2>LA HISTORIA DE NICOL Y ROYER</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
-      <EnvelopeWithLetter/>
+      <EnvelopeWithLetter />
+
+      {/* 👇 Muestra el gif desde public */}
+      <img src="/cat.gif" alt="Gatito animado" className={styles.catGif} />
     </div>
   );
 }

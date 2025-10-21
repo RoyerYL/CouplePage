@@ -2,4 +2,14 @@
     width: 100vw;
     height: 100vh;
     align-items: center;
+    background-color: #eeeeee;
+}
+.catGif {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 120px;
+  height: auto;
+  z-index: 1000;
+  pointer-events: none; /* para que no bloquee clics */
 }
