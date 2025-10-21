@@ -29,7 +29,7 @@ function LandingPage() {
 
   return (
     <div className={styles.containerLanding}>
-      <h2>Fecha de referencia: 19 de julio de 2024</h2>
+      <h2>LA HISTORIA DE NICOL Y ROYER</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
       <EnvelopeWithLetter/>
     </div>
