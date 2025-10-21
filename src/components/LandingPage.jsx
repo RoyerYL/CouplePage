@@ -34,7 +34,6 @@ function LandingPage() {
     "🕊️ Si existiera una caja del amor perfecto, ustedes ya estarían dentro (y yo también).",
     "🌸 Ustedes me enseñaron que el amor se cuida, como se cuida a un gato feliz."
   ];
-
   useEffect(() => {
     const startDate = new Date('2024-07-19');
     const now = new Date();
@@ -59,31 +58,32 @@ function LandingPage() {
 
   const handleCatClick = (e) => {
     const randomMsg = catMessages[Math.floor(Math.random() * catMessages.length)];
-
-    // estimar ancho del texto (10px por carácter aprox)
-    const textWidth = randomMsg.length * 10;
     const screenWidth = window.innerWidth;
+    const textLength = randomMsg.length;
 
-    // posición base (cerca del gato)
-    let x = e.clientX - textWidth / 2 - 40;
+    // estimar ancho del texto (depende del tamaño de pantalla)
+    let textWidth = textLength * 8;
+    if (screenWidth < 600) textWidth = textLength * 6; // más compacto en móvil
+
+    let x = e.clientX - textWidth / 2 - 20;
     const y = e.clientY - 40 - Math.random() * 60;
 
-    // asegurar que no se salga del borde izquierdo ni derecho
-    x = Math.max(20, Math.min(screenWidth - textWidth - 20, x));
+    // asegurar que no se salga del borde
+    x = Math.max(10, Math.min(screenWidth - textWidth - 10, x));
 
     const newMessage = {
       id: Date.now(),
       text: randomMsg,
       x,
-      y
+      y,
+      isLong: textLength > 60 || screenWidth < 500 // mensaje largo o pantalla chica
     };
 
     setFloatingMessages(prev => [...prev, newMessage]);
 
-    // eliminar mensaje después de 3s
     setTimeout(() => {
       setFloatingMessages(prev => prev.filter(msg => msg.id !== newMessage.id));
-    }, 3000);
+    }, 4000);
   };
 
   return (
@@ -92,7 +92,6 @@ function LandingPage() {
       <p>Tiempo transcurrido: {timePassed}</p>
       <EnvelopeWithLetter />
 
-      {/* 🐱 Imagen del gato */}
       <img
         src="/cat.gif"
         alt="Gatito animado"
@@ -100,12 +99,15 @@ function LandingPage() {
         onClick={handleCatClick}
       />
 
-      {/* 💬 Renderiza todos los mensajes activos */}
       {floatingMessages.map(msg => (
         <div
           key={msg.id}
-          className={styles.floatingMessage}
-          style={{ left: msg.x, top: msg.y }}
+          className={`${styles.floatingMessage} ${msg.isLong ? styles.longMessage : ''}`}
+          style={{
+            left: msg.isLong ? '50%' : msg.x,
+            top: msg.y,
+            transform: msg.isLong ? 'translateX(-50%)' : 'none'
+          }}
         >
           {msg.text}
         </div>

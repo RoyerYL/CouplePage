@@ -27,10 +27,19 @@ h2{
   padding: 8px 14px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  animation: floatUp 3s ease forwards;
+  animation: floatUp 4s ease forwards;
   pointer-events: none;
   white-space: nowrap;
   z-index: 1001;
+  max-width: none;
+}
+
+/* Mensajes largos o en móviles */
+.longMessage {
+  white-space: normal;
+  text-align: center;
+  max-width: 80vw;
+  line-height: 1.2;
 }
 
 @keyframes floatUp {
