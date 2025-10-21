@@ -1,9 +1,12 @@
 .containerLanding{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     align-items: center;
     background-color: #eeeeee;
     color: black;
+}
+h2{
+    margin: 0;
 }
 .catGif {
   position: fixed;
@@ -15,24 +18,37 @@
   cursor: pointer;
 }
 
-.catMessage {
+.floatingMessage {
   position: fixed;
-  bottom: 140px; /* un poco arriba del gato */
-  right: 20px;
-  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.95);
   color: #333;
   font-weight: bold;
-  padding: 10px 16px;
-  border-radius: 20px;
+  padding: 8px 14px;
+  border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: floatUp 3s ease forwards;
+  pointer-events: none;
+  white-space: nowrap;
   z-index: 1001;
-  animation: fadeInOut 5s ease forwards;
 }
 
-/* 🌀 Animación del mensaje */
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(10px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(10px); }
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
 }
+

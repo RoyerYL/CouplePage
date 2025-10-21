@@ -4,7 +4,7 @@ import EnvelopeWithLetter from './EnvelopeWithLetter';
 
 function LandingPage() {
   const [timePassed, setTimePassed] = useState('');
-  const [catMessage, setCatMessage] = useState(''); // mensaje temporal del gato
+  const [floatingMessages, setFloatingMessages] = useState([]);
 
   const catMessages = [
     "🐾 ¡Miau! Qué lindo verte por aquí.",
@@ -57,14 +57,32 @@ function LandingPage() {
     setTimePassed(`${years} año(s), ${months} mes(es), ${days} día(s)`);
   }, []);
 
-  const handleCatClick = () => {
-    // selecciona mensaje aleatorio
+  const handleCatClick = (e) => {
     const randomMsg = catMessages[Math.floor(Math.random() * catMessages.length)];
-    setCatMessage(randomMsg);
 
-    // oculta el mensaje después de 3 segundos
+    // estimar ancho del texto (10px por carácter aprox)
+    const textWidth = randomMsg.length * 10;
+    const screenWidth = window.innerWidth;
+
+    // posición base (cerca del gato)
+    let x = e.clientX - textWidth / 2 - 40;
+    const y = e.clientY - 40 - Math.random() * 60;
+
+    // asegurar que no se salga del borde izquierdo ni derecho
+    x = Math.max(20, Math.min(screenWidth - textWidth - 20, x));
+
+    const newMessage = {
+      id: Date.now(),
+      text: randomMsg,
+      x,
+      y
+    };
+
+    setFloatingMessages(prev => [...prev, newMessage]);
+
+    // eliminar mensaje después de 3s
     setTimeout(() => {
-      setCatMessage('');
+      setFloatingMessages(prev => prev.filter(msg => msg.id !== newMessage.id));
     }, 3000);
   };
 
@@ -82,8 +100,16 @@ function LandingPage() {
         onClick={handleCatClick}
       />
 
-      {/* 💬 Mensaje temporal del gato */}
-      {catMessage && <div className={styles.catMessage}>{catMessage}</div>}
+      {/* 💬 Renderiza todos los mensajes activos */}
+      {floatingMessages.map(msg => (
+        <div
+          key={msg.id}
+          className={styles.floatingMessage}
+          style={{ left: msg.x, top: msg.y }}
+        >
+          {msg.text}
+        </div>
+      ))}
     </div>
   );
 }
