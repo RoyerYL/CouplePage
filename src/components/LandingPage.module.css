@@ -12,5 +12,27 @@
   width: 120px;
   height: auto;
   z-index: 1000;
-  pointer-events: none; /* para que no bloquee clics */
+  cursor: pointer;
+}
+
+.catMessage {
+  position: fixed;
+  bottom: 140px; /* un poco arriba del gato */
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: fadeInOut 3s ease forwards;
+}
+
+/* 🌀 Animación del mensaje */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(10px); }
 }
