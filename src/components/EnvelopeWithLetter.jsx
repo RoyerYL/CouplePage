@@ -3,18 +3,19 @@ import styles from './EnvelopeWithLetter.module.css';
 
 function EnvelopeWithLetter({
   messages = [
-    "💌 ¡Eres una persona increíble!",
+    "💌 ¡Eres mi persona favorita!",
     "🌟 Hoy es un gran día para sonreír.",
     "💫 Cree en ti, siempre.",
     "🍀 La suerte te acompaña.",
-    "🌸 Gracias por existir.",
+    "🌸 Gracias por existir en mi vida.",
     "🌟 Espero que te diviertas.",
+    "🌟 Haces mis dias mas felices",
     "🌟 ¡Que tengas un buen día!",
+    "❤ TE AMO",
+    "❤ RYN",
+    "Iluminas mis días",
     "Quede arepatiesa",
     "Sera?",
-    "Hoy es un gran dia para sonreir",
-    "cree en ti siempre",
-    "la suerte te acompana",
     "Hazlo por copo :D",
     "Eso tilín"
 
