@@ -8,14 +8,33 @@
 h2{
     margin: 0;
 }
-.catGif {
+.catWrapper {
   position: fixed;
   bottom: 10px;
   right: 10px;
   width: 120px;
-  height: auto;
+  height: 120px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
   cursor: pointer;
+}
+
+/* Solo la imagen crece, no el contenedor */
+.catGif {
+  width: 100%;
+  height: auto;
+  transition: transform 0.25s ease;
+}
+
+.catWrapper:hover .catGif {
+  transform: scale(1.15);
 }
 
 .floatingMessage {

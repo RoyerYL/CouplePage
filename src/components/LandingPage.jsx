@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import styles from './LandingPage.module.css';
 import EnvelopeWithLetter from './EnvelopeWithLetter';
+import MediaPlayer from './MediaPlayer';
 
 function LandingPage() {
   const [timePassed, setTimePassed] = useState('');
   const [floatingMessages, setFloatingMessages] = useState([]);
+  const [catGif, setCatGif] = useState('/cat1.gif');
+  const catGifs = ['/cat.gif', '/cat2.gif', '/cat3.gif', '/cat4.gif'];
 
+  // Elegir gif aleatorio al iniciar
+  useEffect(() => {
+    setCatGif(catGifs[Math.floor(Math.random() * catGifs.length)]);
+  }, []);
   const catMessages = [
     "🐾 ¡Miau! Qué lindo verte por aquí.",
     "😺 El amor es como yo: suave y travieso.",
@@ -91,13 +98,16 @@ function LandingPage() {
       <h2>LA HISTORIA DE NICOL Y ROYER</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
       <EnvelopeWithLetter />
-
-      <img
-        src="/cat.gif"
-        alt="Gatito animado"
-        className={styles.catGif}
-        onClick={handleCatClick}
-      />
+      <MediaPlayer />
+      {/* 🐱 Contenedor del gato */}
+      <div className={styles.catWrapper}>
+        <img
+          src={catGif}
+          alt="Gatito animado"
+          className={styles.catGif}
+          onClick={handleCatClick}
+        />
+      </div>
 
       {floatingMessages.map(msg => (
         <div
