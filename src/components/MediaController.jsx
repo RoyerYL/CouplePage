@@ -20,7 +20,7 @@ const MediaController = () => {
     ];
 
     const audioUrls = [
-        "https://open.spotify.com/intl-es/track/5D9dEZU0NvUlZfnHMGPCxr?si=29693abda9fd4b1c",
+        "https://open.spotify.com/intl-es/track/5TMLavqGRKNxgzMBrVpC9R?si=b883a1d5f802427b",
         "https://open.spotify.com/intl-es/track/4B6XjmOWI55np7y4MUTXDu?si=c0d5849fc4654474",
         "https://open.spotify.com/intl-es/track/3k3NWokhRRkEPhCzPmV8TW?si=790a2613688b47fc",
         "https://open.spotify.com/intl-es/track/1eukaqiqtfgQgfKnJlIueO?si=81bc9cceff764d1f",
