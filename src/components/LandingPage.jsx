@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './LandingPage.module.css';
 import EnvelopeWithLetter from './EnvelopeWithLetter';
-import MediaPlayer from './MediaPlayer';
+import MediaPlayerIframe from './MediaPlayerIframe';
+import SpotifyPlayer from './SpotifyPlayer';
+import MediaController from './MediaController';
 
 function LandingPage() {
   const [timePassed, setTimePassed] = useState('');
@@ -98,7 +100,8 @@ function LandingPage() {
       <h2>LA HISTORIA DE NICOL Y ROYER</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
       <EnvelopeWithLetter />
-      <MediaPlayer />
+      <MediaController />
+
       {/* 🐱 Contenedor del gato */}
       <div className={styles.catWrapper}>
         <img
