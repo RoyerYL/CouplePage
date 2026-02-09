@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './LandingPage.module.css';
 import EnvelopeWithLetter from './EnvelopeWithLetter';
-import MediaPlayerIframe from './MediaPlayerIframe';
-import SpotifyPlayer from './SpotifyPlayer';
 import MediaController from './MediaController';
+import FallingHearts from './FallingHearts'; // Importa el nuevo componente
+import LoveCounter from './LoveCounter'; // Importa el nuevo contador
 
 function LandingPage() {
   const [timePassed, setTimePassed] = useState('');
@@ -15,6 +15,7 @@ function LandingPage() {
   useEffect(() => {
     setCatGif(catGifs[Math.floor(Math.random() * catGifs.length)]);
   }, []);
+  
   const catMessages = [
     "🐾 ¡Miau! Qué lindo verte por aquí.",
     "😺 El amor es como yo: suave y travieso.",
@@ -43,6 +44,7 @@ function LandingPage() {
     "🕊️ Si existiera una caja del amor perfecto, ustedes ya estarían dentro (y yo también).",
     "🌸 Ustedes me enseñaron que el amor se cuida, como se cuida a un gato feliz."
   ];
+  
   useEffect(() => {
     const startDate = new Date('2024-07-19');
     const now = new Date();
@@ -97,8 +99,15 @@ function LandingPage() {
 
   return (
     <div className={styles.containerLanding}>
+      {/* Componente de corazones cayendo */}
+      <FallingHearts initialCount={25} initialSpeed={4} />
+      
       <h2>LA HISTORIA DE NICOL Y ROYER</h2>
       <p>Tiempo transcurrido: {timePassed}</p>
+      
+      {/* Nuevo contador de amor con segundos */}
+      <LoveCounter />
+      
       <EnvelopeWithLetter />
       <MediaController />
 

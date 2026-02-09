@@ -8,6 +8,20 @@
 h2{
     margin: 0;
 }
+/* Agrega estos estilos a tu LandingPage.module.css */
+
+.containerLanding {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Mantén tus estilos existentes y agrega estos */
 .catWrapper {
   position: fixed;
   bottom: 10px;
